@@ -531,14 +531,24 @@ def get_thumbnail(name):
     return img
 
 
-def files_size_to_text(size):
-    fsmb = size / (1024 * 1024)
-    fskb = size % 1024
-    if fsmb == 0:
-        return f'{round(fskb)}KB'
-    else:
-        return f'{round(fsmb, 1)}MB'
+def files_size_to_text(size, complex = False):
+    # convert files size to string, can support GB but now makes sense to keep maximaly MB
+    # gb = 1024 ** 3
+    mb = 1024 ** 2
+    kb = 1024
+    # fsgb = size // gb
+    # fsmb = (size - fsgb * gb) // mb
+    # fskb = (size - fsgb * gb - fsmb * mb )// kb
+    fsmb = (size ) // mb
+    fskb = (size - fsmb * mb )// kb
 
+
+    if fsmb == 0:# and fsgb == 0:
+        return f'{round(fskb)} KB'
+    else: #if fsgb == 0:
+        return f'{round(fsmb, 1)} MB'
+    # else:
+    #     return f"{fsgb} GB"
 
 def get_brush_props(context):
     brush = get_active_brush()
