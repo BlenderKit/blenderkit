@@ -1874,7 +1874,7 @@ def draw_asset_context_menu(layout, context, asset_data, from_panel=False):
                     )  # str(utils.get_param(asset_data, 'textureResolutionMax'))
 
             elif (
-                asset_data["assetBaseId"] in s["assets used"].keys()
+                asset_data["assetBaseId"] in s.get("assets used",{}).keys()
                 and asset_data["assetType"] != "hdr"
                 and (
                     asset_data.get("resolution")
