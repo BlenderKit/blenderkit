@@ -85,7 +85,7 @@ def request_report(url: str, data: dict):
 # SEARCH
 def search_asset(data):
     """Search for specified asset."""
-    bk_logger.debug("Starting search request")
+    bk_logger.info(f"Starting search request: {data['urlquery']}")
     address = get_address()
     data["app_id"] = os.getpid()
     with requests.Session() as session:
